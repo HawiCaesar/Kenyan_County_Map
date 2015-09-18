@@ -14,17 +14,10 @@
 	    			legend: { enabled: true },
 	    			mapNavigation: { enabled: true },
 	    			title: { text : 'Kenyan Counties' },
-	    			 color: {
-						    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-						    stops: [
-						        [0, '#003399'],
-						        [1, '#3366AA']
-						    ]
-						},
 	    			plotOptions: {
 	            		map: {
 	            				mapData: Highcharts.maps['countries/ke-all'],
-	            				allAreas: true, // set to true to show all the map, set to false to show areas with data
+	            				allAreas: false, // set to true to show all the map, set to false to show areas with data
 			            		joinBy: ['value', 'code'],
 			            		 dataLabels: {
 					                enabled: true,
@@ -36,8 +29,8 @@
 					                }
 					            },
 					            tooltip: {
-					                headerFormat: 'Kenya County ',
-					                pointFormat: '{point.name} <br />: General Climate is <b>{series.name}</b>'
+					                headerFormat: '',
+					                pointFormat: '{point.name} <br />General Climate is <b>{series.name}</b>'
 					            }
 	            		}
 	            	},
@@ -58,11 +51,22 @@
 			        	},
 			        	{
 							name: 'Radial',
-							color: 'brown',
+							color: 'rgb(144, 237, 125)',
 				            data: $.map(['Mars','Keri','Laik','Lamu'], function (code) {
 					                return { code: code };
 					           		 })
-			        	}
+			        	},
+			        	{
+							name: 'Temprate',
+							color: 'rgb(247, 163, 92)',
+				            data: $.map(['Busi','Siay','Kisu','Vihi','Elge','Nyam','Kisi','Mura',
+				            			'Kiri','Kiam','Nair','Nyan','Tana','Kili','Kwal','Maku','Tait',
+				            			'Kitu','Meru','Emb','Mach','Kaji','Naro','Migo','Naku','Bome',
+				            			'Bari','West','Samb','Tran','Bung','Kaka','Waji','Isio'], function (code) {
+					                return { code: code };
+					           		 })
+			        	},
+			        	
 					]
 			    });
 			});
