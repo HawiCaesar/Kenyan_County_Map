@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Map Trials </title>
+	<script src="JQuery/jquery-1.10.2.js"></script>
+	<!-- <script src="http://code.highcharts.com/maps/highmaps.js"></script> -->
+	<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="mapdata/countries/ke-all.js"></script>
+	<script>
+		 $(function () {
+	    // Initiate the chart
+	    $('#container').highcharts('Map', {
+	    			credits: { enabled: false },
+	    			legend: { enabled: true },
+	    			mapNavigation: { enabled: true },
+	    			title: { text : 'Kenyan Counties' },
+	    			 color: {
+						    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+						    stops: [
+						        [0, '#003399'],
+						        [1, '#3366AA']
+						    ]
+						},
+	    			plotOptions: {
+	            		map: {
+	            				mapData: Highcharts.maps['countries/ke-all'],
+	            				allAreas: true, // set to true to show all the map, set to false to show areas with data
+			            		joinBy: ['value', 'code'],
+			            		 dataLabels: {
+					                enabled: true,
+					                color: 'black',
+					                formatter: function () {
+					                    if (this.point.value) {
+					                        return this.point.name;
+					                    }
+					                }
+					            },
+					            tooltip: {
+					                headerFormat: 'Kenya County ',
+					                pointFormat: '{point.name} <br />: General Climate is <b>{series.name}</b>'
+					            }
+	            		}
+	            	},
+					series: [
+				        {
+				        	name: 'Hot',
+				        	color: 'red',
+			            	data: $.map(['Mand', 'Momb', 'Gari', 'Turk'], function (code) {
+				                return { code: code };
+				            	})
+			        	},
+			        	{
+							name: 'Cold',
+							color: 'blue',
+				            data: $.map(['Nyer', 'Thar', 'Uasi', 'Nand'], function (code) {
+					                return { code: code };
+					           		 })
+			        	},
+			        	{
+							name: 'Radial',
+							color: 'brown',
+				            data: $.map(['Mars','Keri','Laik','Lamu'], function (code) {
+					                return { code: code };
+					           		 })
+			        	}
+					]
+			    });
+			});
+
+	</script>
+</head>
+<body>
+
+<div id="container" style="height: 500px; min-width: 310px; max-width: 480px; margin: 0 auto"></div>
+
+</body>
+</html>

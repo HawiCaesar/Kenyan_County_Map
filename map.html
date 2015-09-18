@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Map Trials </title>
+	<script src="JQuery/jquery-1.10.2.js"></script>
+	<!-- <script src="http://code.highcharts.com/maps/highmaps.js"></script> -->
+	<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="mapdata/countries/ke-all.js"></script>
+	<script>
+		 $(function () {
+    // Initiate the chart
+    $('#container').highcharts('Map', {
+    			credits: { enabled: false },
+    			legend: { enabled: true },
+    			mapNavigation: { enabled: true },
+    			title: { text : 'Kenyan Counties' },
+        		series: [{
+
+            		mapData: Highcharts.maps['countries/ke-all'],
+            		joinBy: ['value', 'code'],
+            		 dataLabels: {
+		                enabled: true,
+		                color: 'black',
+		                formatter: function () {
+		                    if (this.point.value) {
+		                        return this.point.name;
+		                    }
+		                }
+		            },
+		            tooltip: {
+		                headerFormat: 'Kenyan County: ',
+		                pointFormat: '{point.name} <br /> {point.Cvalue}'
+		            },
+            		data:[
+	            		{ code: 'Waji' },
+	            		{ code: 'Keri' },
+	            		{ code: 'Mand' },
+	            		{ code: 'Mars' },
+	            		{ code: 'Isio' },
+	            		{ code: 'Laik' },
+	            		{ code: 'Gari' },
+	            		{ code: 'Lamu' },
+	            		{ code: 'Tana' },
+	            		{ code: 'Kili' },
+	            		{ code: 'Kwal' },
+	            		{ code: 'Maku' },
+	            		{ code: 'Kitu' },
+	            		{ code: 'Meru' },
+	            		{ code: 'Nyer' },
+	            		{ code: 'Emb' },
+	            		{ code: 'Thar' },
+	            		{ code: 'Mach' },
+	            		{ code: 'Kaji' },
+	            		{ code: 'Tait' },
+	            		{ code: 'Naro' },
+	            		{ code: 'Migo' },
+	            		{ code: 'Naku' },
+	            		{ code: 'Bome' },
+	            		{ code: 'Bari' },
+	            		{ code: 'Turk', "Cvalue":"Lodwar" },
+	            		{ code: 'West' },
+	            		{ code: 'Samb' },
+	            		{ code: 'Tran' },
+	            		{ code: 'Bung' },
+	            		{ code: 'Uasi', "Cvalue":"Eldoret"  },
+	            		{ code: 'Busi' },
+	            		{ code: 'Kaka' },
+	            		{ code: 'Siay' },
+	            		{ code: 'Homa' },
+	            		{ code: 'Kisu' },
+	            		{ code: 'Vihi' },
+	            		{ code: 'Nand' },
+	            		{ code: 'Elge' },
+	            		{ code: 'Nyam' },
+	            		{ code: 'Kisi' },
+	            		{ code: 'Mura' },
+	            		{ code: 'Kiri' },
+	            		{ code: 'Kiam' },
+	            		{ code: 'Nair' },
+	            		{ code: 'Nyan' },
+	            		{ code: 'Momb' }
+            		]
+        		}]
+		    });
+		});
+
+	</script>
+</head>
+<body>
+
+<div id="container" style="height: 800px; min-width: 310px; max-width: 880px; margin: 0 auto"></div>
+
+</body>
+</html>
