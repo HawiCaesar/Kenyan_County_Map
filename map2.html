@@ -29,35 +29,35 @@
 					                }
 					            },
 					            tooltip: {
-					                headerFormat: '',
-					                pointFormat: '{point.name} <br />General Climate is <b>{series.name}</b>'
+					                headerFormat: '<span style="font-size:15px;">County Breakdown</span><br />',
+					                pointFormat: '{point.name} <br />Device Percentage {series.name}<br />Total Devices'
 					            }
 	            		}
 	            	},
 					series: [
 				        {
-				        	name: 'Hot',
+				        	name: '< 25%',
 				        	color: 'red',
 			            	data: $.map(['Mand', 'Momb', 'Gari', 'Turk'], function (code) {
 				                return { code: code };
 				            	})
 			        	},
 			        	{
-							name: 'Cold',
+							name: '25 - 50%',
 							color: 'blue',
 				            data: $.map(['Nyer', 'Thar', 'Uasi', 'Nand'], function (code) {
 					                return { code: code };
 					           		 })
 			        	},
 			        	{
-							name: 'Radial',
+							name: '51-75%',
 							color: 'rgb(144, 237, 125)',
 				            data: $.map(['Mars','Keri','Laik','Lamu'], function (code) {
 					                return { code: code };
 					           		 })
 			        	},
 			        	{
-							name: 'Temprate',
+							name: '76-100%',
 							color: 'rgb(247, 163, 92)',
 				            data: $.map(['Busi','Siay','Kisu','Vihi','Elge','Nyam','Kisi','Mura',
 				            			'Kiri','Kiam','Nair','Nyan','Tana','Kili','Kwal','Maku','Tait',
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-<div id="container" style="height: 500px; min-width: 310px; max-width: 480px; margin: 0 auto"></div>
+<div id="container" style="height: 800px; min-width: 310px; max-width: 880px; margin: 0 auto"></div>
 
 </body>
 </html>
