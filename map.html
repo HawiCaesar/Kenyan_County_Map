@@ -28,8 +28,10 @@
 		                }
 		            },
 		            tooltip: {
-		                headerFormat: 'Kenyan County: ',
-		                pointFormat: '{point.name} <br /> {point.Cvalue}'
+		                headerFormat: 'Kenyan County: <table><tr><td>{point.name}</td></tr>',
+		                pointFormat: '<tr><td>{point.Cvalue}</td></tr>',
+		                footerFormat: '</table>',
+		                useHTML: true
 		            },
             		data:[
             		/* This segment can be put into an external json file and be called like a script */
