@@ -5,10 +5,12 @@
 	<script src="JQuery/jquery-1.10.2.js"></script>
 	<!-- <script src="http://code.highcharts.com/maps/highmaps.js"></script> -->
 	<script src="http://code.highcharts.com/maps/highmaps.js"></script>
-	<script src="mapdata/countries/ke-all.js"></script>
+	<script src="ke-all.js"></script>
 	<script>
 		 $(function () {
 	    // Initiate the chart
+	    $.getJSON('map2-data.php', function (data) {
+
 	    $('#container').highcharts('Map', {
 	    			credits: { enabled: false },
 	    			legend: { enabled: true },
@@ -18,59 +20,22 @@
 	            		map: {
 	            				mapData: Highcharts.maps['countries/ke-all'],
 	            				allAreas: false, // set to true to show all the map, set to false to show areas with data
-			            		joinBy: ['value', 'code'],
+			            		joinBy: ['pvalue', 'code'],
 			            		 dataLabels: {
 					                enabled: true,
-					                color: 'black',
-					                formatter: function () {
-					                    if (this.point.value) {
-					                        return this.point.name;
-					                    }
-					                }
+					                format: '{point.code}',
+					                color: 'black'
 					            },
 					            tooltip: {
 					                headerFormat: '<span style="font-size:15px;">County Breakdown</span><br />',
-					                pointFormat: '{point.name} <br />Device Percentage {series.name}<br />Total Devices'
+					                pointFormat: '{point.name} <br />Device Percentage {series.name}<br />Total Things<br />{point.value}'
 					            }
 	            		}
 	            	},
-					series: [
-				        {
-				        	name: '< 25%',
-				        	color: 'red',
-			            	data: $.map(['Mand', 'Momb', 'Gari', 'Turk'], function (code) {
-				                return { code: code };
-				            	})
-			        	},
-			        	{
-							name: '25 - 50%',
-							color: 'blue',
-				            data: $.map(['Nyer', 'Thar', 'Uasi', 'Nand'], function (code) {
-					                return { code: code };
-					           		 })
-			        	},
-			        	{
-							name: '51-75%',
-							color: 'rgb(144, 237, 125)',
-				            data: $.map(['Mars','Keri','Laik','Lamu'], function (code) {
-					                return { code: code };
-					           		 })
-			        	},
-			        	{
-							name: '76-100%',
-							color: 'rgb(247, 163, 92)',
-				            data: $.map(['Busi','Siay','Kisu','Vihi','Elge','Nyam','Kisi','Mura',
-				            			'Kiri','Kiam','Nair','Nyan','Tana','Kili','Kwal','Maku','Tait',
-				            			'Kitu','Meru','Emb','Mach','Kaji','Naro','Migo','Naku','Bome',
-				            			'Bari','West','Samb','Tran','Bung','Kaka','Waji','Isio'], function (code) {
-					                return { code: code };
-					           		 })
-			        	},
-			        	
-					]
+					series: data
 			    });
 			});
-
+	     });
 	</script>
 </head>
 <body>
