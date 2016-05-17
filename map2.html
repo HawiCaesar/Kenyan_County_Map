@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Map Trials </title>
+	<title> Example Map 2</title>
 </head>
 <body>
 
-<div id="container" style="height: 500px; min-width: 310px; max-width: 880px; margin: 0 auto"></div>
+<div id="container" style="width:100%;height:600px;"></div>
 
 </body>
-<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
 	<script src="http://code.highcharts.com/maps/highmaps.js"></script>
-	<script src="ke-all.js"></script>
+	<script src="json/ke-all-custom.json"></script>
 	<script>
 		 $(function () {
 	    // Initiate the chart
 	    $.getJSON('map2-data.php', function (data) {
 
-	    $('#container').highcharts('Map', {
-	    			credits: { enabled: false },
-	    			legend: { enabled: true },
-	    			mapNavigation: { enabled: true },
-	    			title: { text : 'Kenyan Counties' },
-	    			plotOptions: {
-	            		map: {
-	            				mapData: Highcharts.maps['countries/ke-all'],
-	            				allAreas: false, // set to true to show all the map, set to false to show areas with data
-			            		joinBy: ['pvalue', 'code'],
-			            		 dataLabels: {
-					                enabled: true,
-					                format: '{point.code}',
-					                color: 'black'
-					            },
-					            tooltip: {
-					                headerFormat: '<span style="font-size:15px;">County Breakdown</span><br />',
-					                pointFormat: '{point.name} <br />Device Percentage {series.name}<br />Total Things<br />{point.value}'
-					            }
-	            		}
-	            	},
-					series: data
-			    });
+		    $('#container').highcharts('Map', {
+		    			credits: { enabled: false },
+		    			legend: { enabled: true },
+		    			mapNavigation: { enabled: true },
+		    			title: { text : 'Kenyan Counties' },
+		    			plotOptions: {
+		            		map: {
+		            				mapData: Highcharts.maps['countries/ke-all'],
+		            				allAreas: false, // set to true to show all the map, set to false to show areas with data
+				            		joinBy: ['pvalue', 'code'],
+				            		 dataLabels: {
+						                enabled: true,
+						                format: '{point.code}',
+						                color: 'black'
+						            },
+						            tooltip: {
+						                headerFormat: '<span style="font-size:15px;">County Breakdown</span><br />',
+						                pointFormat: '{point.name} <br />Device Percentage {series.name}<br />Total Things<br />{point.value}'
+						            }
+		            		}
+		            	},
+						series: data
+				    });
 			});
-	     });
+	    });
 	</script>
 </html>

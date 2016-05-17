@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Improved Example Map 3</title>
+</head>
+<body>
+	<div id="container" style="width:100%;height:600px;" ></div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+<script src="http://newsplex.nation.co.ke/nurses_ke_2016/js/numeral.js"></script>
+<script>
+	$(function () {
+
+		//get data to put on map
+		$.getJSON('map3-data.php', function (valuedata) {
+
+			 //get the map itself
+			$.getJSON('json/ke-all.json', function (geojson) {
+
+				// Initiate the chart
+				$('#container').highcharts('Map', {
+					title : {
+						text : "Availability of nurses in Kenya, by county (2011/2012)",
+						style: {
+						fontFamily: 'Lato',
+						fontSize: '15px'
+						},
+					},
+					subtitle: {
+						text: '',
+						style: {
+						fontFamily: 'Lato'
+						},
+					},
+
+					mapNavigation: {
+						enabled: true,
+						buttonOptions: {
+						verticalAlign: 'top'
+						}
+					},
+					credits: {
+						enabled: false
+					},
+
+					legend: {
+						title: {
+						text: 'Nurses per 100,000 people (2012)',
+							style: {
+								color: (Highcharts.theme && Highcharts.theme.textColor) || 'black',
+								fontFamily: 'Lato',
+								fontWeight: 'normal',
+							}
+						},
+					align: 'center',
+					verticalAlign: 'bottom',
+					floating: false,
+					layout: 'horizontal',
+					valueDecimals: 0,
+					backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)',
+					symbolRadius: 0,
+					symbolHeight: 14,
+						itemStyle: {
+							fontWeight: 'normal',
+						},
+					},
+
+					colorAxis: {
+						dataClasses: [{
+								to: 20,
+								name:"<20",
+								color:"#D54339"
+							},
+							{
+								from: 21,
+								to: 39,
+								name:"20-40",
+								color:"#495136"
+							}, 
+							{
+								from: 40,
+								to: 59,
+								name:"40-60",
+								color:"#2372b2"
+							}, 
+							{
+								from: 60,
+								to: 79,
+								name:"60-80",
+								color:"#c65b08"
+							},
+							 {
+								from: 80,
+								to: 99,
+								name:"80-100",
+								color:"#3182bd"
+							},
+							 {
+								from: 100,
+								name:">100",
+								color:"#08519c"
+							}
+						]
+					},
+
+				tooltip: {
+					formatter: function(){
+
+						var c='';
+						c += '<b>'+this.point.code+'</b><br/>';
+						var county="Nurses per 100,000 people (2012): "+ "<b>"+numeral(this.point.value).format('0,0')+ "</b>";
+						c += county;
+						return c;
+					},
+					style: {
+						fontFamily: 'Lato',
+						fontColor:'#cccccc',
+					},
+				},
+				series : [{
+					data : valuedata,
+					mapData: geojson,
+					color: '#2167ab',
+					cursor: 'normal',
+					joinBy: ['COUNTY', 'code'],
+					name: 'Spending',
+					states: {
+						hover: {
+							color: '#3b92d8'
+						}
+					},
+					dataLabels: {
+						enabled: true,
+						format: '{point.code}',
+						style: {
+							fontFamily: 'Lato',
+							fontColor:'#cccccc',
+						},
+					}
+					}]
+				});
+			});
+		});
+	});
+	</script>
+</html>

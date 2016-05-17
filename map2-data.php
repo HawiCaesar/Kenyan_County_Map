@@ -78,6 +78,10 @@ $a = array(
 								)
 				)
 		);
+
+// echo "<pre>";
+// print_r($a);
+// echo "</pre>";
 echo json_encode($a);
 
 ?>
