@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>Improved Example Map 3</title>
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 </head>
-<body>
-	<div id="container" style="width:100%;height:600px;" ></div>
+<body style="font-family: 'Varela Round', sans-serif;">
+	<div id="container" style="width:100%;height:800px;" ></div>
 </body>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
 <script src="js/highmaps.js"></script>
@@ -23,14 +24,14 @@
 					title : {
 						text : "Availability of nurses in Kenya, by county (2011/2012)",
 						style: {
-						fontFamily: 'Lato',
+						fontFamily: 'Varela Round',
 						fontSize: '15px'
 						},
 					},
 					subtitle: {
 						text: '',
 						style: {
-						fontFamily: 'Lato'
+						 fontFamily: 'Varela Round'
 						},
 					},
 
@@ -49,7 +50,7 @@
 						text: 'Nurses per 100,000 people (2012)',
 							style: {
 								color: (Highcharts.theme && Highcharts.theme.textColor) || 'black',
-								fontFamily: 'Lato',
+								 fontFamily: 'Varela Round',
 								fontWeight: 'normal',
 							}
 						},
@@ -114,7 +115,7 @@
 						return c;
 					},
 					style: {
-						fontFamily: 'Lato',
+						fontFamily: 'Varela Round',
 						fontColor:'#cccccc',
 					},
 				},
@@ -134,7 +135,7 @@
 						enabled: true,
 						format: '{point.code}',
 						style: {
-							fontFamily: 'Lato',
+							fontFamily: 'Varela Round',
 							fontColor:'#cccccc',
 						},
 					}
