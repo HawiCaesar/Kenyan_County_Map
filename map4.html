@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Improved Example Map 4</title>
+	<meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="author" content="HawiCaesar" />
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+<body style="font-family: 'Varela Round', sans-serif;">
+	<div id="container" style="width:100%;height:800px;" ></div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+<script src="js/highmaps.js"></script>
+<script src="js/numeral.js"></script>
+<script>
+	$(function () {
+
+		//get data to put on map
+		$.getJSON('map4-data.php', function (valuedata) {
+
+			 //get the map itself
+			$.getJSON('json/ke-all.json', function (geojson) {
+
+				// Initiate the chart
+				$('#container').highcharts('Map', {
+					title : {
+						text : "Class One Enrollment in Primary Schools as of 2014",
+						style: {
+						fontFamily: 'Varela Round',
+						fontSize: '15px'
+						},
+					},
+					subtitle: {
+						text: '',
+						style: {
+						 fontFamily: 'Varela Round'
+						},
+					},
+
+					mapNavigation: {
+						enabled: true,
+						buttonOptions: {
+						verticalAlign: 'top'
+						}
+					},
+					credits: {
+						enabled: false
+					},
+
+					legend: {
+						title: {
+						text: 'Nurses per 100,000 people (2012)',
+							style: {
+								color: (Highcharts.theme && Highcharts.theme.textColor) || 'black',
+								 fontFamily: 'Varela Round',
+								fontWeight: 'normal',
+							}
+						},
+					align: 'center',
+					verticalAlign: 'bottom',
+					floating: false,
+					layout: 'horizontal',
+					valueDecimals: 0,
+					backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)',
+					symbolRadius: 0,
+					symbolHeight: 14,
+						itemStyle: {
+							fontWeight: 'normal',
+						},
+					},
+
+					colorAxis: {
+						dataClasses: [{
+								to: 20000,
+								name:"<20,000",
+								color:"#BCD2EE"
+							},
+							{
+								from: 21000,
+								to: 39000,
+								name:"20,000-40,000",
+								color:"#7EB6FF"
+							}, 
+							{
+								from: 40000,
+								to: 59000,
+								name:"40,000-60,000",
+								color:"#4D71A3"
+							}, 
+							{
+								from: 60000,
+								to: 79000,
+								name:"60,000-80,000",
+								color:"#2B4F81"
+							},
+							 {
+								from: 80000,
+								to: 99000,
+								name:"80,000-100,000",
+								color:"#22316C"
+							},
+							 {
+								from: 100000,
+								name:">100,000",
+								color:"#162252"
+							}
+						]
+					},
+
+				tooltip: {
+					formatter: function(){
+
+						var c='';
+						c += '<b>'+this.point.code+'</b><br/>';
+						var county="Pupils, 2014: "+ "<b>"+numeral(this.point.value).format('0,0')+ "</b>";
+						c += county;
+						return c;
+					},
+					style: {
+						fontFamily: 'Varela Round',
+						fontColor:'#cccccc',
+					},
+				},
+				series : [{
+					data : valuedata,
+					mapData: geojson,
+					color: '#2167ab',
+					cursor: 'normal',
+					joinBy: ['COUNTY', 'code'],
+					name: 'Spending',
+					states: {
+						hover: {
+							color: '#3b92d8'
+						}
+					},
+					dataLabels: {
+						enabled: true,
+						format: '{point.code}',
+						style: {
+							fontFamily: 'Varela Round',
+							fontColor:'#cccccc',
+						},
+					}
+					}]
+				});
+			});
+		});
+	});
+	</script>
+</html>
