@@ -9,12 +9,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
 <script src="js/highmaps.js"></script>
-<!-- <script src="js/numeral.js"></script> -->
+<script src="js/numeral.js"></script>
 <script>
 	$(function () {
 
 		//get data to put on map
-		$.getJSON('map3-data.php', function (valuedata) {
+		$.getJSON('json/map3-data.json', function (valuedata) {
 
 			 //get the map itself
 			$.getJSON('json/ke-all.json', function (geojson) {
