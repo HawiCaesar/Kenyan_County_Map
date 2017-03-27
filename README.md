@@ -11,5 +11,5 @@ Inkscape -  Software to draw shapes over the png or jpg format
 Follow this guide provided by Highcharts http://www.highcharts.com/docs/maps/custom-maps
 
 Example Screen Shot
-![Alt text](./example4.png?raw=true "Kenyan Map Divided into Counties")
+![Alt text](./example_map4.png?raw=true "Kenyan Map Divided into Counties")
 
